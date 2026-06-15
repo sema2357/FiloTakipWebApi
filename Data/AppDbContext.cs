@@ -17,5 +17,9 @@ namespace FiloTakipWebApi.Data
 
             modelBuilder.Entity<Arac>().HasIndex(a => a.Plaka).IsUnique();
         }
+        public DbSet<Sefer> Seferler { get; set; }
+
+    
     }
+
 }
