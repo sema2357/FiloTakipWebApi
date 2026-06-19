@@ -19,6 +19,8 @@ namespace FiloTakipWebApi.Data
         }
         public DbSet<Sefer> Seferler { get; set; }
 
+        public DbSet<Kullanici> Kullanicilar { get; set; }
+
     
     }
 

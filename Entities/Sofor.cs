@@ -25,11 +25,11 @@ namespace FiloTakipWebApi.Entities
         [StringLength(20)]
         public string TelefonNo { get; set; }
 
-        public int PerformansPuani { get; set; } = 100; // Performans puanı (Başlangıç 100)
+        public int PerformansPuani { get; set; } = 100; // Başlangıç 100
 
         public bool AktifMi { get; set; } = true;
 
-        // --- İLİŞKİ (Araç - Şoför Eşleştirme) ---
+        //  Araç - Şoför Eşleştirme
         public int? AktifAracId { get; set; }
 
         [ForeignKey("AktifAracId")]
