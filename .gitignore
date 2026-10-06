@@ -1,0 +1,20 @@
+# Gizli bilgiler (.env) ve üretilen/yerel dosyalar GitHub'a gönderilmesin
+.env
+*.env.local
+
+# .NET
+bin/
+obj/
+.vs/
+*.user
+
+# Postman: istekler içinde gerçek JWT token ve giriş bilgileri var
+FiloTakipWebApi/postman/
+FiloTakipWebApi/.postman/
+
+# Kullanıcı yüklemeleri
+FiloTakipWebApi/wwwroot/uploads/
+
+# Frontend
+node_modules/
+dist/

@@ -1,0 +1,8 @@
+bin/
+obj/
+.vs/
+.postman/
+postman/
+*.user
+Dockerfile
+.dockerignore

@@ -1,0 +1,327 @@
+
+<style>
+*{box-sizing:border-box}
+h2.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.tabs{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap}
+.tab{padding:7px 15px;font-size:13px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);cursor:pointer;transition:all .15s}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.panel{display:none}.panel.active{display:block}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px}
+.mc{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem}
+.mc-title{font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 8px;display:flex;align-items:center;gap:7px}
+.mc-title i{font-size:17px;color:var(--color-text-secondary)}
+.mc ul{list-style:none;margin:0;padding:0}
+.mc li{font-size:12px;color:var(--color-text-secondary);padding:3px 0;border-bottom:0.5px solid var(--color-border-tertiary);line-height:1.45}
+.mc li:last-child{border-bottom:none}
+.tbl-wrap{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:12px}
+.tbl-head{font-size:13px;font-weight:500;padding:8px 12px;background:var(--color-background-secondary);display:flex;align-items:center;gap:8px;color:var(--color-text-primary)}
+.tbl-head i{font-size:15px;color:var(--color-text-secondary)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:6px 10px;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500;border-bottom:0.5px solid var(--color-border-tertiary)}
+td{padding:5px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.pk{color:var(--color-text-danger);font-weight:500}
+.fk{color:var(--color-text-info)}
+.menu-2col{display:grid;grid-template-columns:1fr 1fr;gap:0 2rem}
+.mi{padding:4px 0;display:flex;align-items:flex-start;gap:8px;font-size:13px}
+.mi i{font-size:15px;color:var(--color-text-secondary);margin-top:2px;flex-shrink:0}
+.msub{margin-left:24px;font-size:12px;color:var(--color-text-secondary);line-height:1.75;margin-bottom:10px}
+.badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:99px;margin-left:5px}
+.bd{background:var(--color-background-danger);color:var(--color-text-danger)}
+.bi{background:var(--color-background-info);color:var(--color-text-info)}
+.ba{background:var(--color-background-warning);color:var(--color-text-warning)}
+.bs{background:var(--color-background-success);color:var(--color-text-success)}
+.flow-row{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:16px}
+.fstep{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:10px 14px;font-size:12px;text-align:center;min-width:100px}
+.farr{color:var(--color-text-secondary);padding:0 5px;font-size:18px}
+.fnote{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px 14px;font-size:12px;color:var(--color-text-secondary);line-height:1.8;margin-bottom:12px}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+</style>
+
+<h2 class="sr-only">Araç Filo Takibi sistemi — modüller, menü ve veri modeli</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="sw('modules',this)"><i class="ti ti-layout-grid" aria-hidden="true"></i> Modüller</button>
+  <button class="tab" onclick="sw('menu',this)"><i class="ti ti-sitemap" aria-hidden="true"></i> Menü yapısı</button>
+  <button class="tab" onclick="sw('data',this)"><i class="ti ti-database" aria-hidden="true"></i> Veri modeli</button>
+  <button class="tab" onclick="sw('flow',this)"><i class="ti ti-route" aria-hidden="true"></i> İş akışları</button>
+</div>
+
+<div id="p-modules" class="panel active">
+  <div class="mgrid">
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-truck" aria-hidden="true"></i>Araç yönetimi</p>
+      <ul>
+        <li>Araç kayıt & profil</li>
+        <li>Marka / model / yıl</li>
+        <li>Plaka & şasi no</li>
+        <li>Ruhsat & sigorta bilgisi</li>
+        <li>Fotoğraf galerisi</li>
+        <li>Araç durum takibi</li>
+        <li>Kilometre güncellemesi</li>
+      </ul>
+    </div>
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-user-check" aria-hidden="true"></i>Şoför yönetimi</p>
+      <ul>
+        <li>Şoför kayıt & profil</li>
+        <li>Ehliyet bilgisi & sınıfı</li>
+        <li>Ehliyet geçerlilik takibi</li>
+        <li>Araç-şoför eşleştirme</li>
+        <li>Görev geçmişi</li>
+        <li>Performans puanı</li>
+        <li>Ceza / ihlal kaydı</li>
+      </ul>
+    </div>
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-map-pin" aria-hidden="true"></i>Sefer yönetimi</p>
+      <ul>
+        <li>Sefer oluşturma & atama</li>
+        <li>Başlangıç / varış noktası</li>
+        <li>Km & süre takibi</li>
+        <li>Yük / yolcu bilgisi</li>
+        <li>Sefer onay akışı</li>
+        <li>Fiili vs planlanan km</li>
+        <li>Sefer belgesi / irsaliye</li>
+      </ul>
+    </div>
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-gas-station" aria-hidden="true"></i>Yakıt takibi</p>
+      <ul>
+        <li>Yakıt girişi (litre / TL)</li>
+        <li>Pompa & istasyon bilgisi</li>
+        <li>Litre/100km hesaplama</li>
+        <li>Yakıt kartı yönetimi</li>
+        <li>Anormal tüketim uyarısı</li>
+        <li>Aylık yakıt raporu</li>
+        <li>Araç bazlı maliyet</li>
+      </ul>
+    </div>
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-tools" aria-hidden="true"></i>Bakım & arıza</p>
+      <ul>
+        <li>Periyodik bakım planı</li>
+        <li>Bakım hatırlatıcısı (km/gün)</li>
+        <li>Arıza kaydı açma</li>
+        <li>Servis takibi</li>
+        <li>Parça değişim geçmişi</li>
+        <li>Bakım maliyeti analizi</li>
+        <li>Lastik takibi</li>
+      </ul>
+    </div>
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-file-certificate" aria-hidden="true"></i>Belge & sigorta</p>
+      <ul>
+        <li>Sigorta poliçesi takibi</li>
+        <li>Muayene tarihleri</li>
+        <li>Egzoz muayenesi</li>
+        <li>Araç ruhsatı yönetimi</li>
+        <li>Geçerlilik uyarıları</li>
+        <li>Belge yükleme (PDF)</li>
+        <li>Otomatik bildirim</li>
+      </ul>
+    </div>
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-chart-bar" aria-hidden="true"></i>Raporlar</p>
+      <ul>
+        <li>Araç bazlı maliyet</li>
+        <li>Şoför performansı</li>
+        <li>Yakıt tüketim analizi</li>
+        <li>Sefer & km raporu</li>
+        <li>Bakım maliyet özeti</li>
+        <li>Filo genel özeti</li>
+        <li>Excel / PDF export</li>
+      </ul>
+    </div>
+    <div class="mc">
+      <p class="mc-title"><i class="ti ti-settings" aria-hidden="true"></i>Sistem ayarları</p>
+      <ul>
+        <li>Kullanıcı & rol yönetimi</li>
+        <li>Araç tipleri tanımlama</li>
+        <li>Şube / lokasyon</li>
+        <li>Bildirim şablonları</li>
+        <li>Yakıt tipi tanımlama</li>
+        <li>Masraf kategorileri</li>
+        <li>SLA & eşik değerleri</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="p-menu" class="panel">
+  <div class="menu-2col">
+    <div>
+      <div class="mi"><i class="ti ti-layout-dashboard" aria-hidden="true"></i><strong>Dashboard</strong></div>
+      <div class="msub">Filo özet kartları · Bugün seferdeki araçlar<br>Yaklaşan bakımlar · Belge uyarıları<br>Hızlı km & yakıt metrikleri</div>
+
+      <div class="mi"><i class="ti ti-truck" aria-hidden="true"></i><strong>Araçlar</strong></div>
+      <div class="msub">Araç listesi (filtre: durum, tip, marka)<br>Yeni araç ekle <span class="badge bi">+ Yeni</span><br>Araç detay & profil<br>Belge & sigorta durumu<br>Km geçmişi</div>
+
+      <div class="mi"><i class="ti ti-users" aria-hidden="true"></i><strong>Şoförler</strong></div>
+      <div class="msub">Şoför listesi<br>Yeni şoför<br>Ehliyet geçerlilik durumu <span class="badge bd">!</span><br>Görev & performans geçmişi</div>
+
+      <div class="mi"><i class="ti ti-map-2" aria-hidden="true"></i><strong>Seferler</strong></div>
+      <div class="msub">Aktif seferler · Planlanan seferler<br>Yeni sefer oluştur<br>Sefer geçmişi & arşiv<br>Onay bekleyenler <span class="badge ba">Bekliyor</span></div>
+    </div>
+    <div>
+      <div class="mi"><i class="ti ti-gas-station" aria-hidden="true"></i><strong>Yakıt</strong></div>
+      <div class="msub">Yakıt girişleri<br>Yeni yakıt kaydı<br>Tüketim analizi<br>Anormal tüketim uyarıları <span class="badge bd">!</span><br>Yakıt kartları</div>
+
+      <div class="mi"><i class="ti ti-tools" aria-hidden="true"></i><strong>Bakım & arıza</strong></div>
+      <div class="msub">Bakım planı takvimi<br>Yeni bakım kaydı<br>Arıza kayıtları<br>Servis takibi<br>Yaklaşan bakımlar <span class="badge ba">Uyarı</span></div>
+
+      <div class="mi"><i class="ti ti-file-invoice" aria-hidden="true"></i><strong>Masraflar</strong></div>
+      <div class="msub">Tüm masraf kayıtları<br>Masraf kategorileri<br>Araç / şoför bazlı maliyet<br>Aylık maliyet raporu</div>
+
+      <div class="mi"><i class="ti ti-chart-pie" aria-hidden="true"></i><strong>Raporlar</strong></div>
+      <div class="msub">Filo özet raporu<br>Yakıt tüketim raporu<br>Bakım maliyet raporu<br>Şoför performans raporu</div>
+
+      <div class="mi"><i class="ti ti-adjustments" aria-hidden="true"></i><strong>Ayarlar</strong></div>
+      <div class="msub">Kullanıcılar & roller<br>Araç tipleri · Yakıt tipleri<br>Bildirim kuralları · Eşik değerleri</div>
+    </div>
+  </div>
+</div>
+
+<div id="p-data" class="panel">
+  <div class="tbl-wrap">
+    <div class="tbl-head"><i class="ti ti-truck" aria-hidden="true"></i>Arac (Vehicle)</div>
+    <table><thead><tr><th>Alan</th><th>Tip</th><th>Açıklama</th></tr></thead><tbody>
+      <tr><td class="pk">Id</td><td>INT PK</td><td>Otomatik artan</td></tr>
+      <tr><td>Plaka</td><td>VARCHAR(12)</td><td>Benzersiz plaka (34 ABC 1234)</td></tr>
+      <tr><td>SasiNo</td><td>VARCHAR(17)</td><td>VIN numarası</td></tr>
+      <tr><td class="fk">MarkaId</td><td>INT FK</td><td>→ Marka tablosu</td></tr>
+      <tr><td class="fk">ModelId</td><td>INT FK</td><td>→ Model tablosu</td></tr>
+      <tr><td>ModelYili</td><td>SMALLINT</td><td></td></tr>
+      <tr><td class="fk">AracTipiId</td><td>INT FK</td><td>Kamyon / Binek / Minibüs vb.</td></tr>
+      <tr><td>MevcutKm</td><td>INT</td><td>Güncel kilometre</td></tr>
+      <tr><td>YakitTipi</td><td>TINYINT</td><td>1-Dizel 2-Benzin 3-LPG 4-Elektrik</td></tr>
+      <tr><td>DurumId</td><td>TINYINT</td><td>1-Aktif 2-Bakımda 3-Seferde 4-Pasif</td></tr>
+      <tr><td>SigortaBitisTarihi</td><td>DATE</td><td>Poliçe bitiş</td></tr>
+      <tr><td>MuayeneBitisTarihi</td><td>DATE</td><td>Teknik muayene bitiş</td></tr>
+    </tbody></table>
+  </div>
+
+  <div class="tbl-wrap">
+    <div class="tbl-head"><i class="ti ti-user" aria-hidden="true"></i>Sofor (Driver)</div>
+    <table><thead><tr><th>Alan</th><th>Tip</th><th>Açıklama</th></tr></thead><tbody>
+      <tr><td class="pk">Id</td><td>INT PK</td><td></td></tr>
+      <tr><td>Ad</td><td>NVARCHAR(100)</td><td></td></tr>
+      <tr><td>Telefon</td><td>VARCHAR(15)</td><td></td></tr>
+      <tr><td>EhliyetNo</td><td>VARCHAR(20)</td><td>Benzersiz</td></tr>
+      <tr><td>EhliyetSinifi</td><td>VARCHAR(10)</td><td>B, C, D, E…</td></tr>
+      <tr><td>EhliyetBitisTarihi</td><td>DATE</td><td>Geçerlilik uyarısı için</td></tr>
+      <tr><td>PerformansPuani</td><td>DECIMAL(4,2)</td><td>Hesaplanan skor</td></tr>
+      <tr><td>AktifMi</td><td>BIT</td><td></td></tr>
+    </tbody></table>
+  </div>
+
+  <div class="tbl-wrap">
+    <div class="tbl-head"><i class="ti ti-map-pin" aria-hidden="true"></i>Sefer (Trip) · Yakıt (FuelRecord) · Bakım (MaintenanceRecord)</div>
+    <table><thead><tr><th>Tablo</th><th>Önemli alanlar</th></tr></thead><tbody>
+      <tr><td><strong>Sefer</strong></td><td>Id · AracId(FK) · SoforId(FK) · BaslangicNoktasi · BitisNoktasi · PlanlananKm · FiiliKm · BaslamaTarihi · BitisTarihi · YukBilgisi · DurumId · OnaylayanId(FK)</td></tr>
+      <tr><td><strong>YakitKaydi</strong></td><td>Id · AracId(FK) · SoforId(FK) · SeferKaydiId(FK·NULL) · Tarih · LitreMiktari · BirimFiyat · ToplamTutar · Km · Istasyon · YakitKartiId(FK·NULL)</td></tr>
+      <tr><td><strong>BakimKaydi</strong></td><td>Id · AracId(FK) · BakimTipiId(FK) · KmDegeri · Tarih · Maliyet · ServisAdi · Notlar · SonrakiBakimKm · SonrakiBakimTarihi</td></tr>
+      <tr><td><strong>ArizaKaydi</strong></td><td>Id · AracId(FK) · SoforId(FK·NULL) · ArizaTarihi · Aciklama · DurumId · CozumAciklamasi · BakimKaydiId(FK·NULL)</td></tr>
+    </tbody></table>
+  </div>
+
+  <div class="tbl-wrap">
+    <div class="tbl-head"><i class="ti ti-file-certificate" aria-hidden="true"></i>Belge · Masraf · Yardımcı tablolar</div>
+    <table><thead><tr><th>Tablo</th><th>Önemli alanlar</th></tr></thead><tbody>
+      <tr><td><strong>Belge</strong></td><td>Id · AracId(FK) · BelgeTipiId(FK) · BaslamaTarihi · BitisTarihi · DosyaYolu · HatirlatmaGun</td></tr>
+      <tr><td><strong>MasrafKaydi</strong></td><td>Id · AracId(FK) · SoforId(FK·NULL) · KategoriId(FK) · Tarih · Tutar · Aciklama · BelgeYolu</td></tr>
+      <tr><td><strong>KmGuncelleme</strong></td><td>Id · AracId(FK) · Tarih · YeniKm · GuncelleyenId(FK) — km audit log</td></tr>
+      <tr><td><strong>Marka / Model / AracTipi / BakimTipi</strong></td><td>Lookup tabloları — Id + Ad + AktifMi</td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div id="p-flow" class="panel">
+  <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:0 0 10px">Sefer iş akışı</p>
+  <div class="flow-row">
+    <div class="fstep" style="background:var(--color-background-secondary)">
+      <div style="font-size:17px;color:var(--color-text-secondary);margin-bottom:4px"><i class="ti ti-circle-plus" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px">Sefer oluştur</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">Araç & şoför ata</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-warning);border-color:var(--color-border-warning)">
+      <div style="font-size:17px;color:var(--color-text-warning);margin-bottom:4px"><i class="ti ti-clock" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-warning)">Onay bekliyor</div>
+      <div style="font-size:11px;color:var(--color-text-warning)">Yönetici onayı</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-info);border-color:var(--color-border-info)">
+      <div style="font-size:17px;color:var(--color-text-info);margin-bottom:4px"><i class="ti ti-map-2" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-info)">Seferde</div>
+      <div style="font-size:11px;color:var(--color-text-info)">Araç aktif</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-success);border-color:var(--color-border-success)">
+      <div style="font-size:17px;color:var(--color-text-success);margin-bottom:4px"><i class="ti ti-check" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-success)">Tamamlandı</div>
+      <div style="font-size:11px;color:var(--color-text-success)">Fiili km girildi</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-secondary)">
+      <div style="font-size:17px;color:var(--color-text-secondary);margin-bottom:4px"><i class="ti ti-file-text" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px">Kapandı</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">Maliyet hesaplandı</div>
+    </div>
+  </div>
+
+  <p style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin:12px 0 10px">Bakım hatırlatma akışı</p>
+  <div class="flow-row">
+    <div class="fstep" style="background:var(--color-background-secondary)">
+      <div style="font-size:17px;color:var(--color-text-secondary);margin-bottom:4px"><i class="ti ti-settings-2" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px">Bakım planı</div>
+      <div style="font-size:11px;color:var(--color-text-secondary)">Km / gün eşiği</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-warning);border-color:var(--color-border-warning)">
+      <div style="font-size:17px;color:var(--color-text-warning);margin-bottom:4px"><i class="ti ti-bell" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-warning)">Uyarı</div>
+      <div style="font-size:11px;color:var(--color-text-warning)">500 km / 7 gün kaldı</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-danger);border-color:var(--color-border-danger)">
+      <div style="font-size:17px;color:var(--color-text-danger);margin-bottom:4px"><i class="ti ti-alert-triangle" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-danger)">Gecikmiş</div>
+      <div style="font-size:11px;color:var(--color-text-danger)">Km / tarih aşıldı</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-info);border-color:var(--color-border-info)">
+      <div style="font-size:17px;color:var(--color-text-info);margin-bottom:4px"><i class="ti ti-tools" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-info)">Bakımda</div>
+      <div style="font-size:11px;color:var(--color-text-info)">Servis kaydı açık</div>
+    </div>
+    <div class="farr">›</div>
+    <div class="fstep" style="background:var(--color-background-success);border-color:var(--color-border-success)">
+      <div style="font-size:17px;color:var(--color-text-success);margin-bottom:4px"><i class="ti ti-check" aria-hidden="true"></i></div>
+      <div style="font-weight:500;font-size:12px;color:var(--color-text-success)">Tamamlandı</div>
+      <div style="font-size:11px;color:var(--color-text-success)">Sonraki plan güncellendi</div>
+    </div>
+  </div>
+
+  <div class="fnote">
+    <strong style="color:var(--color-text-primary)">Otomatik tetikleyiciler</strong><br>
+    Km güncellemesi yapılınca → bakım & belge eşikleri kontrol edilir<br>
+    Sigorta / muayene / ehliyet → bitiş tarihine 30 / 7 gün kala bildirim<br>
+    Yakıt tüketimi ort. %20 üstüne çıkınca → anormal tüketim uyarısı<br>
+    Sefer tamamlanınca → fiili km otomatik araç km'sine eklenir
+  </div>
+
+  <div class="btn-row">
+    <button style="font-size:13px;padding:8px" onclick="sendPrompt('Araç Filo Takibi için .NET Core Web API proje iskeletini oluştur. Controller, Service, Repository katmanları ve Dapper ile MSSQL entegrasyonu dahil.')">Proje iskeleti oluştur ↗</button>
+    <button style="font-size:13px;padding:8px" onclick="sendPrompt('Araç Filo Takibi için tüm MSSQL tablolarını oluşturan SQL scriptini yaz. Foreign key, index ve örnek seed datası dahil.')">SQL oluşturma scriptini yaz ↗</button>
+  </div>
+</div>
+
+<script>
+function sw(name,btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('p-'+name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
