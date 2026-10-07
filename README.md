@@ -1,111 +1,143 @@
 # 🚚 Filo Takip Sistemi
 
-Araç filolarını tek yerden yönetmek için geliştirilmiş web uygulaması. Araç, şoför, sefer, yakıt, bakım ve belge/sigorta süreçlerini takip eder; maliyet ve performans raporları üretir.
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET-10.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10" />
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Microsoft%20SQL%20Server-CC292B?style=for-the-badge&logo=microsoft-sql-server&logoColor=white" alt="SQL Server" />
+  <img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" />
+  <img src="https://img.shields.io/badge/JWT-Secure-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white" alt="JWT" />
+</p>
 
-## Özellikler
+Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçeklenebilir tam yığın web uygulaması. Araç, şoför, sefer, yakıt tüketimi, bakım geçmişi ve belge/sigorta süreçlerini uçtan uca takip eder; maliyet ve performans analizleri sunar.
 
-- **Araç yönetimi:** kayıt, detay sayfası, fotoğraf, kilometre güncelleme, muayene/sigorta geçerlilik uyarıları
-- **Şoför yönetimi:** kayıt, ehliyet bilgisi ve geçerlilik takibi
-- **Sefer yönetimi:** sefer oluşturma, araç/şoför atama, onay akışı
-- **Yakıt takibi:** yakıt girişleri, tüketim analizi, anormal tüketim tespiti
-- **Bakım:** bakım kayıtları, yaklaşan bakım uyarıları, bakım tamamlama
-- **Belge & sigorta:** poliçe ve belge takibi, belge yükleme
-- **Raporlar:** filo özeti, araç bazlı maliyet, şoför performansı
-- **Kullanıcı & şube yönetimi:** rol tabanlı yetkilendirme (Admin / Yönetici / Kullanıcı)
+---
 
-## Teknolojiler
+## 📸 Ekran Görüntüleri
 
-| Katman | Teknoloji |
+<div align="center">
+  <h3>📊 Dashboard / Genel Bakış</h3>
+  <img src="docs/screenshots/dashboard.png" alt="Dashboard Ekranı" width="850" onerror="this.src='Proje_Taslak/filo_takip_sistemi.jpeg'"/>
+  <p><i>Filo metrikleri, aktif seferler, yaklaşan bakımlar ve belge uyarıları</i></p>
+</div>
+
+<br/>
+
+<div align="center">
+  <table border="0">
+    <tr>
+      <td width="50%" align="center">
+        <b>🚗 Araç Yönetimi & Detay</b><br/>
+        <img src="docs/screenshots/araclar.png" alt="Araçlar" width="400" onerror="this.style.display='none'"/>
+      </td>
+      <td width="50%" align="center">
+        <b>🛣️ Sefer Planlama & Takip</b><br/>
+        <img src="docs/screenshots/seferler.png" alt="Seferler" width="400" onerror="this.style.display='none'"/>
+      </td>
+    </tr>
+  </table>
+</div>
+
+---
+
+## 🚀 Özellikler
+
+- **Araç Yönetimi:** Araç kaydı, teknik detaylar, fotoğraf galerisi, kilometre geçmişi, muayene/sigorta geçerlilik alarmları.
+- **Şoför Yönetimi:** Şoför profilleri, ehliyet sınıfı & süresi takibi, araç eşleştirme.
+- **Sefer Yönetimi:** Sefer oluşturma, onay süreçleri, tahmini ve fiili km takibi.
+- **Yakıt Takibi:** Yakıt fiş/fatura girişleri, 100 km başı ortalama tüketim analizi, anormal tüketim uyarıları.
+- **Bakım & Servis:** Periyodik bakım takvimi, parça/işçilik masrafları, yaklaşan bakım bildirimleri.
+- **Belge & Sigorta:** Kasko, trafik sigortası ve araç evrakları takibi, PDF/görsel yükleme.
+- **Raporlama & Analiz:** Araç bazlı toplam sahip olma maliyeti (TCO), şoför performans puanlaması ve filo özet raporları.
+- **Yetkilendirme:** JWT tabanlı rol yönetimi (`Admin`, `Yonetici`, `Kullanici`).
+
+---
+
+## 🛠️ Teknolojiler
+
+| Katman | Teknoloji / Kütüphane |
 |---|---|
-| Frontend | React 19, TypeScript, Vite, Tailwind CSS, React Router, Axios |
-| Backend | ASP.NET Core Web API (.NET 10), Entity Framework Core, Dapper |
-| Veritabanı | Microsoft SQL Server |
-| Kimlik doğrulama | JWT, BCrypt ile şifre özetleme |
-| Dağıtım | Docker, Docker Compose, nginx |
+| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS, Lucide React, Axios |
+| **Backend** | ASP.NET Core Web API (.NET 10), EF Core, Dapper |
+| **Veritabanı** | Microsoft SQL Server 2022 |
+| **Güvenlik** | JWT (JSON Web Tokens), BCrypt Password Hashing |
+| **DevOps & Dağıtım** | Docker, Docker Compose, Nginx (Alpine) |
 
-## Hızlı Başlangıç (Docker)
+---
 
-Gereksinim: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+## ⚡ Hızlı Başlangıç (Docker ile)
+
+Önkoşul: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 ```bash
-# 1. Ortam dosyasını oluşturun
+# 1. Ortam değişkenleri şablonunu kopyalayın
 cp .env.example .env        # Windows (PowerShell): Copy-Item .env.example .env
 
-# 2. .env içindeki üç değeri doldurun (aşağıya bakın)
+# 2. .env dosyasını açıp gerekli alanları tanımlayın (veya varsayılan bırakın)
 
-# 3. Başlatın
+# 3. Konteynerleri derleyip ayağa kaldırın
 docker compose up -d --build
 ```
 
-| Servis | Adres |
-|---|---|
-| Uygulama (frontend) | http://localhost:5173 |
-| API + Swagger | http://localhost:5223 |
+### Erişim Adresleri
 
-İlk girişte `admin@filo.com` e-postası ve `.env` dosyasındaki `ADMIN_SIFRE` değeri kullanılır.
+| Servis | Adres | Varsayılan Giriş |
+|---|---|---|
+| **Web Arayüzü (Frontend)** | [http://localhost:5173](http://localhost:5173) | `admin@filo.com` / `.env'deki ADMIN_SIFRE` |
+| **Swagger API Dokümantasyonu** | [http://localhost:5223](http://localhost:5223) | Bearer Token ile yetkilendirme |
 
-### Ortam değişkenleri (`.env`)
+---
+
+### Ortam Değişkenleri (`.env`)
 
 | Değişken | Açıklama |
 |---|---|
-| `SA_PASSWORD` | SQL Server `sa` şifresi (en az 8 karakter; büyük/küçük harf ve rakam içermeli) |
-| `JWT_ANAHTAR` | JWT imzalama anahtarı (en az 32 karakter, rastgele) |
-| `ADMIN_SIFRE` | İlk açılışta oluşturulan admin kullanıcısının şifresi |
+| `SA_PASSWORD` | SQL Server `sa` parolası (güçlü karakterler içermelidir) |
+| `JWT_ANAHTAR` | JWT token imzalama gizli anahtarı (minimum 32 karakter) |
+| `ADMIN_SIFRE` | Veritabanı ilk kez kurulduğunda tanımlanacak Admin parolası |
 
-> **Not:** `.env` dosyası GitHub'a gönderilmez. Gerçek şifreleri asla commit etmeyin.
-> `ADMIN_SIFRE` yalnızca veritabanı ilk oluşturulurken kullanılır.
+> 🔒 **Güvenlik Notu:** `.env` dosyası `.gitignore` ile korunmaktadır, asla GitHub'a gönderilmez.
 
-Rastgele değer üretmek için (PowerShell):
+---
+
+## 💻 Docker Olmadan Çalıştırma (Geliştirici Ortamı)
+
+### 1. Backend (.NET 10 & SQL Server)
 
 ```powershell
--join ((48..57)+(65..90)+(97..122) | Get-Random -Count 40 | ForEach-Object {[char]$_})
-```
-
-### Faydalı komutlar
-
-```bash
-docker compose down          # durdur (veriler kalır)
-docker compose up -d         # tekrar başlat
-docker compose down -v       # durdur ve tüm verileri sil
-docker logs -f filotakip-api # API loglarını izle
-```
-
-## Docker olmadan çalıştırma
-
-**Backend** (.NET 10 SDK ve SQL Server / LocalDB gerekir):
-
-```bash
 cd FiloTakipWebApi
-# PowerShell
 $env:Jwt__Anahtar = "en-az-32-karakterlik-rastgele-bir-anahtar"
 $env:Admin__Sifre = "guclu-bir-sifre"
 dotnet run
 ```
 
-**Frontend** (Node.js 22+):
+### 2. Frontend (Node.js 20+)
 
-```bash
+```powershell
 cd FiloTakipFrontend
 npm install
 npm run dev
 ```
 
-> Frontend, API adresini [`src/lib/api.ts`](FiloTakipFrontend/src/lib/api.ts) içinde `http://localhost:5223/api` olarak kullanır.
+---
 
-## Proje yapısı
+## 📁 Proje Dizin Yapısı
 
 ```
-├── FiloTakipFrontend/   # React + Vite arayüzü
-├── FiloTakipWebApi/     # ASP.NET Core API (Controllers, Services, Models, Migrations)
-├── Proje_Taslak/        # Tasarım taslağı (modüller, menü, veri modeli)
-├── docker-compose.yml   # SQL Server + API + Frontend
-└── .env.example         # Ortam değişkenleri şablonu
+├── FiloTakipFrontend/   # React + Vite kullanıcı arayüzü
+├── FiloTakipWebApi/     # .NET 10 Web API & Veri erişim katmanı
+├── Proje_Taslak/        # Taslak arayüz ve veri modeli şemaları
+├── docs/screenshots/    # Dokümantasyon ekran görüntüleri
+├── docker-compose.yml   # Çoklu servis orkestrasyonu
+└── .env.example         # Örnek çevre değişkenleri şablonu
 ```
 
-## Yapılacaklar
+---
 
-- [ ] Masraf modülü (masraf kayıtları ve kategorileri)
-- [ ] Arıza kayıtları, yakıt kartları ve lastik takibi
-- [ ] Excel / PDF dışa aktarma
-- [ ] Ek raporlar (yakıt tüketimi, sefer/km, bakım maliyeti)
-- [ ] Otomatik bildirim ve hatırlatmalar
+## 📌 Yol Haritası (Roadmap)
+
+- [ ] Masraf kategorileri ve harcama modülü
+- [ ] Arıza bildirim & servis takip iş akışı
+- [ ] Excel & PDF formatında rapor dışa aktarma (Export)
+- [ ] E-posta / SMS bildirim entegrasyonları
