@@ -19,7 +19,7 @@ Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçek
 <div align="center">
   <h3> Dashboard / Genel Bakış</h3>
   <img src="docs/screenshots/dashboard.png" alt="Dashboard Ekranı" width="850" onerror="this.src='Proje_Taslak/filo_takip_sistemi.jpeg'"/>
-  <p><i>Filo metrikleri, aktif seferler, yaklaşan bakımlar ve belge uyarıları</i></p>
+  <!-- <p><i>Filo metrikleri, aktif seferler, yaklaşan bakımlar ve belge uyarıları</i></p> -->
 </div>
 
 <br/>
@@ -29,7 +29,7 @@ Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçek
     <tr>
       <td width="50%" align="center">
         <b></b><br/>
-        <img src="docs/screenshots/araclar.png" alt="Araçlar" width="400" onerror="this.style.display='none'"/>
+        <img src="docs/screenshots/araclar.png" alt="" width="400" onerror="this.style.display='none'"/>
       
     </tr>
   </table>
