@@ -14,10 +14,10 @@ Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçek
 
 ---
 
-## 📸 Ekran Görüntüleri
+##  Ekran Görüntüleri
 
 <div align="center">
-  <h3>📊 Dashboard / Genel Bakış</h3>
+  <h3> Dashboard / Genel Bakış</h3>
   <img src="docs/screenshots/dashboard.png" alt="Dashboard Ekranı" width="850" onerror="this.src='Proje_Taslak/filo_takip_sistemi.jpeg'"/>
   <p><i>Filo metrikleri, aktif seferler, yaklaşan bakımlar ve belge uyarıları</i></p>
 </div>
@@ -28,20 +28,16 @@ Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçek
   <table border="0">
     <tr>
       <td width="50%" align="center">
-        <b>🚗 Araç Yönetimi & Detay</b><br/>
+        <b></b><br/>
         <img src="docs/screenshots/araclar.png" alt="Araçlar" width="400" onerror="this.style.display='none'"/>
-      </td>
-      <td width="50%" align="center">
-        <b>🛣️ Sefer Planlama & Takip</b><br/>
-        <img src="docs/screenshots/seferler.png" alt="Seferler" width="400" onerror="this.style.display='none'"/>
-      </td>
+      
     </tr>
   </table>
 </div>
 
 ---
 
-## 🚀 Özellikler
+##  Özellikler
 
 - **Araç Yönetimi:** Araç kaydı, teknik detaylar, fotoğraf galerisi, kilometre geçmişi, muayene/sigorta geçerlilik alarmları.
 - **Şoför Yönetimi:** Şoför profilleri, ehliyet sınıfı & süresi takibi, araç eşleştirme.
@@ -54,7 +50,7 @@ Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçek
 
 ---
 
-## 🛠️ Teknolojiler
+##  Teknolojiler
 
 | Katman | Teknoloji / Kütüphane |
 |---|---|
@@ -66,7 +62,7 @@ Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçek
 
 ---
 
-## ⚡ Hızlı Başlangıç (Docker ile)
+##  Hızlı Başlangıç (Docker ile)
 
 Önkoşul: [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
@@ -97,11 +93,11 @@ docker compose up -d --build
 | `JWT_ANAHTAR` | JWT token imzalama gizli anahtarı (minimum 32 karakter) |
 | `ADMIN_SIFRE` | Veritabanı ilk kez kurulduğunda tanımlanacak Admin parolası |
 
-> 🔒 **Güvenlik Notu:** `.env` dosyası `.gitignore` ile korunmaktadır, asla GitHub'a gönderilmez.
+>  **Güvenlik Notu:** `.env` dosyası `.gitignore` ile korunmaktadır, asla GitHub'a gönderilmez.
 
 ---
 
-## 💻 Docker Olmadan Çalıştırma (Geliştirici Ortamı)
+##  Docker Olmadan Çalıştırma (Geliştirici Ortamı)
 
 ### 1. Backend (.NET 10 & SQL Server)
 
@@ -122,7 +118,7 @@ npm run dev
 
 ---
 
-## 📁 Proje Dizin Yapısı
+## Proje Dizin Yapısı
 
 ```
 ├── FiloTakipFrontend/   # React + Vite kullanıcı arayüzü
@@ -135,7 +131,7 @@ npm run dev
 
 ---
 
-## 📌 Yol Haritası (Roadmap)
+## Yol Haritası (Roadmap)
 
 - [ ] Masraf kategorileri ve harcama modülü
 - [ ] Arıza bildirim & servis takip iş akışı
