@@ -27,10 +27,10 @@ Araç filolarını tek merkezden yönetmek için geliştirilmiş modern, ölçek
 <div align="center">
   <table border="0">
     <tr>
-      <td width="50%" align="center">
-        <b></b><br/>
-        <img src="docs/screenshots/araclar.png" alt="" width="400" onerror="this.style.display='none'"/>
-      
+      <td align="center">
+        <b>🚗 Araç Detay & Yönetim</b><br/>
+        <img src="docs/screenshots/arac-detay.png" alt="Araç Detay" width="750" />
+      </td>
     </tr>
   </table>
 </div>
