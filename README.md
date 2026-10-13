@@ -129,11 +129,3 @@ npm run dev
 └── .env.example         # Örnek çevre değişkenleri şablonu
 ```
 
----
-
-## Yol Haritası (Roadmap)
-
-- [ ] Masraf kategorileri ve harcama modülü
-- [ ] Arıza bildirim & servis takip iş akışı
-- [ ] Excel & PDF formatında rapor dışa aktarma (Export)
-- [ ] E-posta / SMS bildirim entegrasyonları
